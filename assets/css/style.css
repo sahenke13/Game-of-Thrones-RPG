@@ -1,0 +1,24 @@
+.bank{
+    height: 160px;
+    width: 100%;
+    margin: 20px;
+    background: gray;
+    color: white;
+
+}
+
+.char{
+    position: relative;
+    width: 15%;
+    height: 120px;
+    background: black;
+    float: left;
+    margin:3%
+
+}
+
+#tccc{
+    background: black;
+    color: white;
+    height: 60px;
+}
