@@ -16,13 +16,15 @@
         <h1>Game of Thrones RPG</h1>
     </nav>
     <div id = "mainBody">
-        <button id = "attack">Attack!!</button>
+        
         <section id= "instructionsSection">
-            <div id = "message">
-
+            <div id = "charBankLabel">
+                Select your character.
+            </div>
+            <div><button id = "attack">Attack!!</button>
             </div>
         </section>
-        <span id = "charBankLabel">Chose your Hero</span>
+        
         <section id = "charBank" class = "bank">
             <div id = "arya" class = "char" value ="0">
                 Arya
@@ -46,14 +48,17 @@
 
 
         <section id = "urChar" class = "bank">
+            <div id = "label">Your Hero</div>
                 <div></div><span id ="myHero"> </span>
             
         </section>
         <section id = "enemyChar" class = "bank">
-                Your Current Enemy: <span id = "urFoe">None</span>
+                <div id = "label">Your Current Enemy:</div>
+                 <span id = "urFoe"></span>
         </section>
         <section id = "grave" class = "bank">
-                You have Vanquished:<span id ="vanquished"></span>
+                <div id = "label">You have Vanquished:</div>
+                <span id ="vanquished"></span>
         </section>
         
 

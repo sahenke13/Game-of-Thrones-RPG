@@ -11,8 +11,9 @@ window.onload=function(){
     var enemyCount = 0;
     var defeated = 0;
     var winCount = 0;
+    
     //create 4 characters    
-   var charBank=[ 
+    var charBank=[ 
         {
         name: "arya",
         attackPower: 20,
@@ -32,41 +33,56 @@ window.onload=function(){
         hp: 120
     },
         {
-        name: "NightKing",
+        name: "nightKing",
         attackPower: 25,
         counterAttack: 40,
         hp: 175
     }
     ]
-    
-  
-    
 
+    $("#attack").hide();
+
+    // if(charCount == 1 && enemyCount == 1){
+    //     console.log("---------")
+    //     $('#charBankLabel').text("ATTACK");
+    //     $("#attack").show();
+    //     return;
+
+    // }
+    if(winCount===3){
+        alert("YOu have won")
+    }
+    
     //Click on char elements to select your Hero and your enemies
     $(".char").on("click",function()
     {
+        console.log("charcount" + charCount, "enemyCount" + enemyCount)
+
 
     if(charCount === 0 && enemyCount ===0)
       {
         selectedCharIndex = parseInt($(this).attr("value"));
         selectedChar = charBank[selectedCharIndex];
         $('#charBankLabel').text("select which Enemy to attack");
+      
         console.log("Selected Character");
         $(this).detach().appendTo("#urChar");  
         charCount=1;
         return;
         }
         if(charCount ===1 && enemyCount ===0)
-        {   
-            $('#charBankLabel').text("select an enemy to attack");
+        {  
             enemyCharIndex = parseInt($(this).attr("value"));
             enemyChar = charBank[enemyCharIndex];
+            //APPEND ENEMY TO CURRENT ENEMY 
             $(this).detach().appendTo("#enemyChar");
-            $('#charBankLabel').text("select an enemy to attack");
+           console.log("----")
             enemyCount = 1;  
             return;
         }  else if(charCount ===1 && enemyCount ===1)
         {
+                
+            //need attaCK button to show up
             alert("You need to attack your enemy")
         } 
 
@@ -74,21 +90,28 @@ window.onload=function(){
 
         $("#attack").on("click",function(){
             attack(enemyChar,selectedChar);
-            if(defeated = 1 ){
-                $("#char #urFoe").detach().appendTo("#vanquished")
-
-            }
+           
 
         });
-       
-      
+        console.log("charcount" + charCount, "enemyCount" + enemyCount)
+  if(charCount == 1 && enemyCount == 1){
+        console.log("---------")
+        console.log("charcount" + charCount, "enemyCount" + enemyCount)
+        $('#charBankLabel').text("ATTACK");
+        $("#attack").show();
+        return;
+
+    }
+
+        
       
         //function to attact x is enemy and y is your selected character
 
         function attack(x, y){
             console.log("The enemy is: " + x.name);
             console.log("Your hero is: " + y.name);
-            
+            var test = "#"+x.name;
+            console.log(test);
     
             if(x.hp >0 && y.hp >0)
             {         
@@ -107,10 +130,15 @@ window.onload=function(){
                 else if(x.hp<=0)
                 {
                     console.log("You have vanquished your enemy")
+                    console.log(x);
                     defeated = 1;
                     enemyCount = 0;
                     winCount++;
+                    $(test).detach().appendTo("#vanquished")
+        
+                    
                 }
+                
             }
             if(winCount==3){
                 alert("You have vanquished your enemies.")
