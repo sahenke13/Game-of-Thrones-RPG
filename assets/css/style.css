@@ -1,24 +1,91 @@
 .bank{
-    height: 160px;
-    width: 100%;
-    margin: 20px;
-    background: gray;
+    height: 150px;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    
     color: white;
+    text-align: center;
 
+
+}
+#instructionsSection{
+    width: 200px;
+    height: 300px;
+    position: relative;
+    top: 400px;
+    left: 80px;
+    display: inline-block;
+    background: red;
 }
 
 .char{
     position: relative;
-    width: 15%;
+    width: 200px;
     height: 120px;
     background: black;
-    float: left;
-    margin:3%
+    
+    display: inline-block;
+    text-align: center;
+    text-shadow: 5px;
+}
+.char:hover{
+    border-color: red;
+}
 
+#attack{
+    color: red;
+    position: relative;
+    top: 400px;
+    left: 80px;
 }
 
 #tccc{
     background: black;
     color: white;
     height: 60px;
+}
+
+body{
+    background: url("../images/gameOfThronesBackGroundOption1.jpg");
+    background-size: cover;
+}
+
+#arya{
+    position: relative;
+    background: url("../images/aryaImg.webp");
+    background-size: cover;
+    border-style: solid;
+    border-color:white;
+    border-width: 5px;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+#arya:hover, #nightKing:hover, #jonSnow:hover, #theHound:hover{
+    border-color: red;
+}
+
+#nightKing{
+    background: url("../images/nightKingImg.webp");
+    background-size: cover;
+    border-color:white;
+    border-width: 5px;
+    border-style: solid;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+#jonSnow{
+    background: url("../images/jonSnowImg.jpg");
+    background-size: cover;
+    border-color:white;
+    border-style: solid;
+    border-width: 5px;
+    text-shadow: 2px 2px 8px #FF0000;
+}
+#theHound{
+    background: url("../images/theHoundImg.jpg");
+    background-size: cover;
+    border-color:white;
+    border-width: 5px;
+    border-style: solid;
+    text-shadow: 2px 2px 8px #FF0000;
+
 }

@@ -16,31 +16,29 @@
         <h1>Game of Thrones RPG</h1>
     </nav>
     <div id = "mainBody">
+        <button id = "attack">Attack!!</button>
+        <section id= "instructionsSection">
+            <div id = "message">
 
+            </div>
+        </section>
+        <span id = "charBankLabel">Chose your Hero</span>
         <section id = "charBank" class = "bank">
-            <div id = "arya" class = "char" value ="arya">
+            <div id = "arya" class = "char" value ="0">
                 Arya
-                <span id = "hp"></span>
-                <span id = "attack"></span>
-                <span id = "counterAttack"></span>
+                
             </div>
-            <div id = "jonSnow" class = "char" value ="jonSnow">
+            <div id = "jonSnow" class = "char" value ="1">
                 lordCommander
-                <span id = "hp"></span>
-                <span id = ""></span>
-                <span id = ""></span>
+         
             </div>
-            <div id = "theHound" class = "char" value = "hound">
+            <div id = "theHound" class = "char" value = "2">
                 theHound
-                <span id = "hp"></span>
-                <span id = ""></span>
-                <span id = ""></span>
+             
             </div>
-            <div id = "iceKing" class = "char" value = "nightKing">
+            <div id = "nightKing" class = "char" value = "3">
                 nightKing
-                <span id = "hp"></span>
-                <span id = ""></span>
-                <span id = ""></span>
+                
             </div>
         </section>
 
@@ -48,16 +46,20 @@
 
 
         <section id = "urChar" class = "bank">
-            <button id = "attack">Attack!!</button>
+                <div></div><span id ="myHero"> </span>
+            
         </section>
-        <section id = "enemies" class = "bank">
+        <section id = "enemyChar" class = "bank">
+                Your Current Enemy: <span id = "urFoe">None</span>
         </section>
-        <section id = "currentEnemy" class = "bank">
+        <section id = "grave" class = "bank">
+                You have Vanquished:<span id ="vanquished"></span>
         </section>
+        
 
     </div>
     <footer>
-        <div id = "tccc">a game by Twin City Handi Craft &copy;</div>
+        <div id = "tccc">a game by Twin City Coding Craft &copy;</div>
     </footer>
 
 
