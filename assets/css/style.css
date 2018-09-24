@@ -1,5 +1,8 @@
+*{
+    box-sizing: border-box;
+}
 .bank{
-    height: 150px;
+    height: 200px;
     width: 60%;
     margin-left: auto;
     margin-right: auto;
@@ -36,10 +39,16 @@
     border-color: red;
 }
 
-#attack{
+#attack, #reset{
     color: red;
     position: relative;
+    background: black;
+    font-size: 1.5em;
     top: 40px;
+    margin: 20px;
+    padding: 20px;
+    border-radius: 50%;
+    text-align: center;
     
     clear: both;
 }
@@ -50,12 +59,20 @@ h1{
 }
 
 #tccc{
+    position: fixed;
     background: black;
     color: white;
     height: 60px;
     width: 100%;
     text-align: center;
     padding: 20px;
+    bottom: 0;
+    
+}
+mainbody{
+    height: 100%;
+    width: 100%;
+
 }
 
 body{
@@ -107,6 +124,9 @@ body{
     text-align: center;
     color: white;
     text-shadow: 2px 2px 8px #FF0000;
-    font-size:1.5em;
+    font-size:2.0em;
 
+}
+#charBankLabel{
+    font-size: 1.5em;
 }

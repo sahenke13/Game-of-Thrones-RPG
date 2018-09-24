@@ -17,46 +17,38 @@ window.onload=function(){
         {
         name: "arya",
         attackPower: 20,
-        counterAttack: 60,
+        counterAttack: 15,
         hp: 200
     },
         {
         name: "jonSnow",
         attackPower: 15,
-        counterAttack: 10,
-        hp: 120
+        counterAttack: 15,
+        hp: 160
     },
         {
         name: "theHound",
-        attackPower: 20,
+        attackPower: 40,
         counterAttack: 30,
-        hp: 120
+        hp: 130
     },
         {
         name: "nightKing",
         attackPower: 25,
-        counterAttack: 40,
+        counterAttack: 30,
         hp: 175
     }
     ]
-
-    $("#attack").hide();
-
-    // if(charCount == 1 && enemyCount == 1){
-    //     console.log("---------")
-    //     $('#charBankLabel').text("ATTACK");
-    //     $("#attack").show();
-    //     return;
-
-    // }
-    if(winCount===3){
-        alert("YOu have won")
-    }
     
+    
+    $("#attack").hide();
+    $("#reset").hide();
+        
+  
     //Click on char elements to select your Hero and your enemies
     $(".char").on("click",function()
     {
-        console.log("charcount" + charCount, "enemyCount" + enemyCount)
+        console.log("charCount" + charCount, "enemyCount" + enemyCount)
 
 
     if(charCount === 0 && enemyCount ===0)
@@ -64,45 +56,51 @@ window.onload=function(){
         selectedCharIndex = parseInt($(this).attr("value"));
         selectedChar = charBank[selectedCharIndex];
         $('#charBankLabel').text("select which Enemy to attack");
-      
-        console.log("Selected Character");
+        
         $(this).detach().appendTo("#urChar");  
         charCount=1;
-        return;
-        }
-        if(charCount ===1 && enemyCount ===0)
+        
+        
+        } else if(charCount ===1 && enemyCount ===0)
         {  
             enemyCharIndex = parseInt($(this).attr("value"));
             enemyChar = charBank[enemyCharIndex];
-            //APPEND ENEMY TO CURRENT ENEMY 
+            //APPEND ENEMY TO CURRENT ENEMY   
+           
             $(this).detach().appendTo("#enemyChar");
-           console.log("----")
             enemyCount = 1;  
-            return;
+            $("#attack").show();  
+            $('#charBankLabel').text("");
+            
         }  else if(charCount ===1 && enemyCount ===1)
         {
-                
-            //need attaCK button to show up
+                console.log("Attack Button")
+                  
             alert("You need to attack your enemy")
         } 
+        console.log("charCount" + charCount, "enemyCount" + enemyCount)
 
     });
 
         $("#attack").on("click",function(){
             attack(enemyChar,selectedChar);
            
-
         });
         console.log("charcount" + charCount, "enemyCount" + enemyCount)
   if(charCount == 1 && enemyCount == 1){
         console.log("---------")
         console.log("charcount" + charCount, "enemyCount" + enemyCount)
-        $('#charBankLabel').text("ATTACK");
+        
         $("#attack").show();
         return;
 
     }
 
+    $("#reset").on("click",function(){
+        console.log("this is a reset test")
+        reset();
+
+    });
         
       
         //function to attact x is enemy and y is your selected character
@@ -121,10 +119,12 @@ window.onload=function(){
     
                 console.log("enemyHeath is " + x.hp);
                 console.log("Hero Health is "+ y.hp);
+
                 if(y.hp<=0)
                 {
-                alert("Valer Morghulis")
-
+                alert("Valer Morghulis");
+                $("#reset").show();
+                $("#attack").hide(); 
                 } 
                 //if enemy dies
                 else if(x.hp<=0)
@@ -135,34 +135,25 @@ window.onload=function(){
                     enemyCount = 0;
                     winCount++;
                     $(test).detach().appendTo("#vanquished")
-        
-                    
+                    $('#charBankLabel').text("select which Enemy to attack");
+                    $("#attack").hide(); 
                 }
+               
                 
             }
             if(winCount==3){
-                alert("You have vanquished your enemies.")
+                alert("You have vanquished all of your enemies.")
+                $("#reset").show();
+                $("#attack").hide(); 
+                
+                
             }
-            return defeated, enemyCount, winCount;
+            return defeated, enemyCount, winCount, charCount;
     
         }
+
+        function reset(){
+            location.reload();
+
+        }
     }
-
-       
-        
-
-           
-    
-        
-    
-
-    //     if(charCount==0)
-    //   {
-    //     console.log("test");
-    //     console.log(selectedChar);
-    //     console.log(charBank[1])
-            
-    //       for(let i = 0; i<charBank.length; i++){
-    //           console.log(i);
-    //       }
-    //     }
