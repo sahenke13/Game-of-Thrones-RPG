@@ -11,39 +11,40 @@ window.onload=function(){
     var enemyCount = 0;
     var defeated = 0;
     var winCount = 0;
-    
+    var sidebar = $("#charBankLabel")
     //create 4 characters    
     var charBank=[ 
         {
         name: "arya",
-        attackPower: 20,
-        counterAttack: 15,
-        hp: 200
+        attackPower: 30,
+        counterAttack: 20,
+        hp: 185
     },
         {
         name: "jonSnow",
-        attackPower: 15,
-        counterAttack: 15,
-        hp: 160
+        attackPower: 35,
+        counterAttack: 10,
+        hp: 195
     },
         {
         name: "theHound",
         attackPower: 40,
-        counterAttack: 30,
-        hp: 130
+        counterAttack: 20,
+        hp: 175
     },
         {
         name: "nightKing",
-        attackPower: 25,
-        counterAttack: 30,
-        hp: 175
+        attackPower: 5,
+        counterAttack: 35,
+        hp: 180
     }
     ]
-    
-    
+   
+    $("#victoryBanner").hide();
     $("#attack").hide();
     $("#reset").hide();
-        
+        // $(enemyHealth).text("HP: " + x.hp);
+        //     $(heroHealth).text("HP: " + y.hp);    
   
     //Click on char elements to select your Hero and your enemies
     $(".char").on("click",function()
@@ -82,18 +83,18 @@ window.onload=function(){
 
     });
 
-        $("#attack").on("click",function(){
+    $("#attack").on("click",function(){
             attack(enemyChar,selectedChar);
+
+
+            // $(enemyHealth).text("HP: " + x.hp);
+            // $(heroHealth).text("HP: " + y.hp);
            
-        });
-        console.log("charcount" + charCount, "enemyCount" + enemyCount)
-  if(charCount == 1 && enemyCount == 1){
-        console.log("---------")
-        console.log("charcount" + charCount, "enemyCount" + enemyCount)
+    });
         
+    if(charCount == 1 && enemyCount == 1){
         $("#attack").show();
         return;
-
     }
 
     $("#reset").on("click",function(){
@@ -109,46 +110,53 @@ window.onload=function(){
             console.log("The enemy is: " + x.name);
             console.log("Your hero is: " + y.name);
             var test = "#"+x.name;
-            console.log(test);
-    
+            var heroHealth = "#"+y.name+"Hp";
+            var enemyHealth = "#"+x.name+"Hp";
+           
             if(x.hp >0 && y.hp >0)
             {         
                 x.hp =  x.hp - y.attackPower;
                 y.hp = y.hp - x.counterAttack;
                 y.attackPower = y.attackPower + 15;
     
-                console.log("enemyHeath is " + x.hp);
+                console.log("enemyHealth is " + x.hp);
                 console.log("Hero Health is "+ y.hp);
-
+                
+                $(enemyHealth).text("HP: " + x.hp);
+                $(heroHealth).text("HP: " + y.hp);
+                // if hero dies
                 if(y.hp<=0)
                 {
                 alert("Valer Morghulis");
                 $("#reset").show();
                 $("#attack").hide(); 
+                $(heroHealth).hide();
+                sidebar.text("Shame, you have brought shame to your house")
                 } 
                 //if enemy dies
                 else if(x.hp<=0)
                 {
                     console.log("You have vanquished your enemy")
-                    console.log(x);
+                    $(enemyHealth).hide();
                     defeated = 1;
                     enemyCount = 0;
                     winCount++;
                     $(test).detach().appendTo("#vanquished")
-                    $('#charBankLabel').text("select which Enemy to attack");
+                    sidebar.text("select which Enemy to attack");
                     $("#attack").hide(); 
                 }
                
                 
             }
             if(winCount==3){
-                alert("You have vanquished all of your enemies.")
+                
                 $("#reset").show();
                 $("#attack").hide(); 
+                $('#charBankLabel').text("You have won control of Westoros.");
                 
                 
             }
-            return defeated, enemyCount, winCount, charCount;
+            return defeated, enemyCount, winCount, charCount, heroHealth, enemyHealth;
     
         }
 

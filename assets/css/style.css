@@ -130,3 +130,12 @@ body{
 #charBankLabel{
     font-size: 1.5em;
 }
+
+.hpTag{
+    text-align: center;
+    position: relative;
+    bottom: -60px;
+    
+    height: 20px;
+    text-shadow: 2px 2px 8px #FF0000;
+}
