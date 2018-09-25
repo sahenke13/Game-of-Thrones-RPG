@@ -17,7 +17,7 @@ window.onload=function(){
         {
         name: "arya",
         attackPower: 30,
-        counterAttack: 20,
+        counterAttack: 25,
         hp: 185
     },
         {
@@ -30,7 +30,7 @@ window.onload=function(){
         name: "theHound",
         attackPower: 40,
         counterAttack: 20,
-        hp: 175
+        hp: 170
     },
         {
         name: "nightKing",
@@ -122,15 +122,16 @@ window.onload=function(){
                 console.log("enemyHealth is " + x.hp);
                 console.log("Hero Health is "+ y.hp);
                 
-                $(enemyHealth).text("HP: " + x.hp);
-                $(heroHealth).text("HP: " + y.hp);
+                $(enemyHealth).text(x.hp);
+                $(heroHealth).text(y.hp);
                 // if hero dies
                 if(y.hp<=0)
                 {
-                alert("Valer Morghulis");
+               
                 $("#reset").show();
                 $("#attack").hide(); 
                 $(heroHealth).hide();
+                $(enemyHealth).hide();
                 sidebar.text("Shame, you have brought shame to your house")
                 } 
                 //if enemy dies
@@ -141,6 +142,7 @@ window.onload=function(){
                     defeated = 1;
                     enemyCount = 0;
                     winCount++;
+                    $(enemyHealth).hide();
                     $(test).detach().appendTo("#vanquished")
                     sidebar.text("select which Enemy to attack");
                     $("#attack").hide(); 
